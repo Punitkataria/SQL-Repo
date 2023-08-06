@@ -371,4 +371,102 @@ HAVING  COUNT(*) > 1;
 
 
 -- SUBQUERIES
-/* Subqueries are the queries embedded into other queries 
+/* Subqueries are the queries embedded into other queries */
+
+
+
+
+
+
+-- Data Manipulation Language
+-- INSERT
+INSERT INTO customers
+VALUE(DEFAULT, 'Anna', 'Nixon','UK',550);
+
+-- Here DEFAULT means get the value from table defination
+
+-- insert one more customers in customer table
+INSERT INTO customers
+(first_name,last_name)
+Values('Max', 'lang'); 
+
+-- Here we have defined that in which columns we want to put the values 
+
+
+
+-- UPDATE Command
+-- Modify the values of existing rows
+
+-- update without where changes the values of every row
+-- use primary key of the row which you wanna update
+UPDATE customers
+SET country = 'Germany'
+WHERE customer_id = 7;
+
+-- updating multiple cols in same row
+UPDATE customers
+SET country = 'USA',
+	score = 700
+WHERE customer_id = 6;
+
+SELECT
+COUNT(*)
+FROM customers;
+
+DESCRIBE customers;
+
+-- DELETE Command
+-- Remove both new customers
+
+DELETE FROM customers; # DELETE Without WHERE DELETES all rows from table
+
+DELETE FROM customers
+WHERE customer_id IN (6,7);
+
+SELECT * 
+FROM customers;
+
+-- If u wish delete a large table then DELETE command gonna take long time 
+-- BEST PRACTICE: then you should use TRUNCATE command to delete
+ 
+TRUNCATE customers;
+
+
+
+-- DATA DEFINATION LANGUAGE(DDL)
+
+-- CREATE  Command
+-- to create a table u have to define the struture of table
+-- three things to deifne in structure
+-- Column name , Data Type , Constraints
+
+-- Constraints : Primary Key, Not Null, Unique, Default
+ 
+ -- Create new table called Perrsons with 4 columns: ID, person_name, birth_date, and phone
+ 
+ CREATE TABLE DB_sql_tutorial.persons(
+ id INT PRIMARY KEY AUTO_INCREMENT,  # AUTO INCREMENT will automatically gives a unique consecutive number to column 
+ person_name VARCHAR(50) NOT NULL,
+ birth_date DATE,
+ phone VARCHAR(50) NOT NULL UNIQUE   # Two constraints are used to strictly manage data quality issues 
+ );
+ 
+
+-- ALTER Command
+-- Modify an existing database table using ALTER statement
+
+-- Add new column called email to table persons
+ALTER TABLE persons
+ADD email VARCHAR(15) NOT NULL;
+
+-- u can also add multiple columns to table
+
+
+
+
+-- DROP Command
+-- Delete an existing table using DELETE Commmand
+
+
+DROP TABLE persons
+
